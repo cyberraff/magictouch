@@ -6,17 +6,26 @@ import {
 	NextButton,
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons';
-
+import Service from '../Testimonial';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 
+type ServiceType = {
+	name: string;
+	about: string;
+	image: string;
+	slug: string;
+	description: string;
+};
+
 type PropType = {
 	slides: number[];
 	options?: EmblaOptionsType;
-	services?: any;
+	services: ServiceType[];
 };
+
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options, services } = props;
