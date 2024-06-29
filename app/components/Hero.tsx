@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const links = [
-	{ name: 'Contact Us', href: '/#contact' },
+	{ name: 'Contact Us', href: '/contact' },
 	{ name: 'Read More', href: '/About' },
 ];
 
@@ -20,6 +20,9 @@ export default async function Hero() {
 
 	return (
 		<section className='bg-background py-16 lg:py-28 '>
+			{/* <div>
+				<input type='hidden' autoFocus='true' />
+			</div> */}
 			<div className=' px-4 sm:px-6 max-w-5xl py-2 bg-background lg:max-w-7xl  mx-auto md:flex'>
 				<div className=' md:w-[35%]'>
 					<div className=' text-5xl lg:text-7xl '>

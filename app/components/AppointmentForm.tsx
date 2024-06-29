@@ -97,23 +97,13 @@ export default function AppointmentForm() {
 	function onSubmit(values: AppointmentFormSchemaType) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		// toast({
-		// 	title: 'You submitted the following values:',
-		// 	description: (
-		// 		<pre className='mt-2 w-[340px] rounded-md bg-slate-950 p-4'>
-		// 			<code className='text-white'>
-		// 				{JSON.stringify(values, null, 2)}
-		// 			</code>
-		// 		</pre>
-		// 	),
-		// });
 		console.log(values);
 	}
 	return (
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className='md:flex space-y-8 py-8 bg-background  px-12 gap-0 w-10/12 md:w-[75%] lg:w-[60%]  mx-auto rounded-3xl '>
+				className='md:flex space-y-8 py-8 bg-background  md:px-12 gap-0 w-10/12 md:w-[75%] lg:w-[60%]  mx-auto rounded-3xl '>
 				<div className='w-full lg:w-1/2 justify-center content-center'>
 					{' '}
 					<FormField
@@ -143,7 +133,6 @@ export default function AppointmentForm() {
 									selected={field.value}
 									onSelect={field.onChange}
 									disabled={(date) => date < new Date()}
-									initialFocus
 									className='mx-auto'
 								/>
 
@@ -152,7 +141,7 @@ export default function AppointmentForm() {
 						)}
 					/>
 				</div>
-				<div className='w-full lg:w-1/2 space-y-8 justify-center content-center md:mt-0 '>
+				<div className='w-full lg:w-1/2 space-y-8 justify-center content-center md:mt-0 px-8 sm:px-12 '>
 					<FormField
 						control={form.control}
 						name='time'
@@ -221,21 +210,6 @@ export default function AppointmentForm() {
 							</FormItem>
 						)}
 					/>
-					{/* <FormField
-						control={form.control}
-						name='massageType'
-						render={({ field }) => (
-							<FormItem>
-								<FormControl>
-									<Input
-										placeholder='Please select massage type'
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>{' '} */}
 					<FormField
 						control={form.control}
 						name='name'
@@ -285,44 +259,6 @@ export default function AppointmentForm() {
 						Schedule Appointment
 					</Button>
 				</div>
-				{/* <FormField
-					control={form.control}
-					name='username'
-					render={({ field }) => (
-						<FormItem>
-							<FormControl>
-								<Input placeholder='shadcn' {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>{' '}
-				
-				
-				<FormField
-					control={form.control}
-					name='username'
-					render={({ field }) => (
-						<FormItem>
-							<FormControl>
-								<Input placeholder='shadcn' {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>{' '}
-				<FormField
-					control={form.control}
-					name='username'
-					render={({ field }) => (
-						<FormItem>
-							<FormControl>
-								<Input placeholder='shadcn' {...field} />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/> */}
 			</form>
 		</Form>
 	);

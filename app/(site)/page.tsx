@@ -5,6 +5,7 @@ import Appointment from '../components/Appointment';
 import Pricing from '../components/Pricing';
 import LatestBlog from '../components/LatestBlog';
 import About from '../components/About';
+import Testimonial from '../components/Testimonial';
 
 // export const fetchCache = 'force-no-store';
 
@@ -17,6 +18,7 @@ export default function Home() {
 			<Pricing />
 			<LatestBlog />
 			<About />
+			<Testimonial />
 		</>
 	);
 }
