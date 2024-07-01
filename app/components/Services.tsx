@@ -31,7 +31,7 @@ export const services = [
 
 export default function Services() {
 	return (
-		<section className='bg-background py-16 lg:py-28 '>
+		<section id='Services' className='bg-background py-16 lg:py-28 '>
 			<div className=' px-4 sm:px-6 max-w-5xl py-2 bg-background lg:max-w-7xl  mx-auto '>
 				<h2 className=' text-3xl lg:text-5xl font-bold text-center w-full pb-6'>
 					Our Massage Services

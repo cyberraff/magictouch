@@ -5,7 +5,7 @@ import React from 'react';
 
 export default function About() {
 	return (
-		<div className='bg-primary py-16 lg:py-28 mt-12'>
+		<div id='About' className='bg-primary py-16 lg:py-28 mt-12'>
 			<div className=' px-4 sm:px-6 max-w-5xl py-2 lg:max-w-7xl  mx-auto '>
 				<div className=' md:flex md:flex-row-reverse'>
 					<div className='md:w-1/2 md:py-8 md:px-12'>
