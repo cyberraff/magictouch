@@ -12,7 +12,10 @@ export const socials = [
 	{ icon: <Facebook size={28} />, href: '/About' },
 	{ icon: <Twitter size={28} />, href: '/Services' },
 	{ icon: <FaTiktok size={28} />, href: '/Contact' },
-	{ icon: <FaWhatsapp size={28} />, href: '/Blog' },
+	{
+		icon: <FaWhatsapp size={28} />,
+		href: 'https://wa.me/message/OZYFXEP5GXRHF1',
+	},
 ];
 
 export default function Footer() {
@@ -115,6 +118,7 @@ export default function Footer() {
 								<Link
 									key={idx}
 									href={social.href}
+									target='_blank'
 									className=' text-lg font-semibold transition duration-100 hover:text-primary mx-2'>
 									{social.icon}
 								</Link>
