@@ -1,12 +1,15 @@
 import React, { useCallback } from 'react';
-import { EmblaOptionsType, EmblaCarouselType } from 'embla-carousel';
+import {
+	EmblaOptionsType,
+	EmblaCarouselType,
+	EmblaPluginType,
+} from 'embla-carousel';
 import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 import {
 	PrevButton,
 	NextButton,
 	usePrevNextButtons,
 } from './EmblaCarouselArrowButtons';
-import Service from '../Testimonial';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
@@ -23,9 +26,11 @@ type ServiceType = {
 type PropType = {
 	slides: number[];
 	options?: EmblaOptionsType;
+	plugins?: EmblaPluginType[];
 	services: ServiceType[];
 };
 
+useEmblaCarousel.globalOptions = { loop: true };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
 	const { slides, options, services } = props;
