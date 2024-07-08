@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import React from 'react';
 
 export default function LatestBlog() {
@@ -11,6 +13,9 @@ export default function LatestBlog() {
 						so much <br />
 						My Manbyen
 					</p>
+					<Button>
+						<Link href='/Blog'>Read More</Link>
+					</Button>
 				</h2>
 			</div>
 		</section>

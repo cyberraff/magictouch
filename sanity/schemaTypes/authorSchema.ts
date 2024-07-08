@@ -28,5 +28,41 @@ export default defineType({
 			options: { hotspot: true },
 			validation: (rule) => rule.required(),
 		}),
+		defineField({
+			name: 'about',
+			title: 'About',
+			type: 'array',
+			of: [{ type: 'block' }],
+		}),
+		defineField({
+			name: 'socialMedia',
+			title: 'Social Media',
+			type: 'array',
+			of: [
+				{
+					type: 'object',
+					name: 'socialMediaLink',
+					title: 'Social Media Link',
+					fields: [
+						{
+							name: 'platform',
+							title: 'Platform',
+							type: 'string',
+							validation: (rule) => rule.required(),
+						},
+						{
+							name: 'url',
+							title: 'URL',
+							type: 'url',
+							validation: (rule) =>
+								rule.required().uri({
+									scheme: ['http', 'https'],
+								}),
+						},
+					
+					],
+				},
+			],
+		}),
 	],
 });

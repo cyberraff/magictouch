@@ -50,7 +50,7 @@ export default function Testimonial() {
 		<section className='bg-background  pt-16 lg:pt-28 pb-8 lg:pb-14'>
 			<div className=' px-4 sm:px-6 max-w-5xl py-2 bg-background lg:max-w-7xl  mx-auto '>
 				<h2 className=' text-3xl lg:text-5xl font-bold text-center w-full pb-8 mb-8'>
-					Our Massage Services
+					Testimonials
 				</h2>
 				<EmblaCarousel
 					slides={SLIDES}

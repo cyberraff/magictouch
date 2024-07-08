@@ -5,8 +5,8 @@ import { MobileMenu } from './MobileMenu';
 
 export const links = [
 	{ name: 'Home', href: '/' },
-	{ name: 'About', href: '/#About' },
-	{ name: 'Services', href: '/#Services' },
+	{ name: 'About', href: '/About' },
+	{ name: 'Services', href: '/Services' },
 	{ name: 'Blog', href: '/Blog' },
 	{ name: 'Contact', href: '/Contact' },
 ];

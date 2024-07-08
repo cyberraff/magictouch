@@ -70,7 +70,7 @@ import { BookIcon } from '@sanity/icons';
 import { format, parseISO } from 'date-fns';
 import { defineField, defineType } from 'sanity';
 
-import authorType from './authorSchema';
+import author from './authorSchema';
 
 /**
  * This file is the schema definition for a post.
@@ -148,6 +148,13 @@ export default defineType({
 			options: {
 				hotspot: true,
 			},
+			fields: [
+				{
+					name: 'alt',
+					title: 'Alt',
+					type: 'string',
+				},
+			],
 		}),
 		defineField({
 			name: 'date',
@@ -159,7 +166,8 @@ export default defineType({
 			name: 'author',
 			title: 'Author',
 			type: 'reference',
-			to: [{ type: authorType.name }],
+			to: [{ type: 'author' }],
+			
 		}),
 	],
 	preview: {

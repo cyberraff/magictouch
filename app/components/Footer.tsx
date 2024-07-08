@@ -7,7 +7,7 @@ import { FaTiktok, FaWhatsapp } from 'react-icons/fa6';
 import { links } from './Navbar';
 import Link from 'next/link';
 
-export const socials = [
+const socials = [
 	{ icon: <Instagram size={28} />, href: '/' },
 	{ icon: <Facebook size={28} />, href: '/About' },
 	{ icon: <Twitter size={28} />, href: '/Services' },
@@ -26,7 +26,7 @@ export default function Footer() {
 	return (
 		<footer className=''>
 			<div className=' py-16 lg:py-28 bg-[#2d2d2d]'>
-				<div className='px-4 sm:px-6 max-w-5xl py-2 lg:max-w-7xl  mx-auto md:flex  text-background text-base'>
+				<div className='px-4 sm:px-6 max-w-5xl py-2 lg:max-w-7xl  mx-auto md:flex  text-background text-sm'>
 					<div className='flex-1'>
 						{' '}
 						<p className=' text-2xl font-bold'>
@@ -34,12 +34,11 @@ export default function Footer() {
 							About
 						</p>
 						<p className='md:w-[90%] my-4 pl-4'>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Iusto voluptatibus dolorum natus minus, nemo
-							magni incidunt ut sed debitis, dignissimos corporis
-							suscipit eius nihil. Natus, sed accusantium, omnis
-							ipsum hic ipsam adipisci excepturi error quibusdam
-							rem, id nobis et debitis!
+							We are MagicTouch, where tranquility and
+							rejuvenation await you. Nestled in the heart of
+							LagosCity our luxurious spa offers a sanctuary for
+							relaxation and wellness, providing a respite from
+							the hustle and bustle of everyday life.
 						</p>
 					</div>
 					<div className='flex-1'>
@@ -48,20 +47,20 @@ export default function Footer() {
 							<span className='inline-block w-3 h-3 bg-primary rounded-full mr-1'></span>
 							Menu
 						</p>
-						<ul className='mt-4'>
+						<ul className='my-4'>
 							{links.map((link, idx) => {
 								return (
 									<div key={idx} className=' pl-4'>
 										{pathname === link.href ? (
 											<Link
 												href={link.href}
-												className=' text-lg  font-semibold text-primary hover:text-foreground'>
+												className=' font-semibold text-primary hover:text-foreground'>
 												{link.name}
 											</Link>
 										) : (
 											<Link
 												href={link.href}
-												className=' text-lg font-semibold transition duration-100 hover:text-primary'>
+												className=' font-semibold transition duration-100 hover:text-primary'>
 												{link.name}
 											</Link>
 										)}

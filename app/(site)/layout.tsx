@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import '../globals.css';
 import Navbar from '../components/Navbar';
 import { Poppins } from 'next/font/google';
+import Footer from '../components/Footer';
 
 // const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({
@@ -27,9 +28,10 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={poppins.className}>
-				<div className='bg-primary text-lg lg:text-lg'>
+				<div className='bg-primary text-base'>
 					<Navbar />
 					{children}
+					<Footer />
 				</div>
 			</body>
 		</html>

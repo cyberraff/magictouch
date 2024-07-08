@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const links = [
-	{ name: 'Contact Us', href: '/contact' },
+	{ name: 'Contact Us', href: '/Contact' },
 	{ name: 'Read More', href: '/About' },
 ];
 
@@ -32,9 +32,8 @@ export default async function Hero() {
 						</h1>
 					</div>
 					<p className='py-12 pr-4'>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Voluptatibus eligendi nisi blanditiis, ut consequuntur
-						vel itaque non.
+						Welcome to MagicTouch, where tranquility and
+						rejuvenation await you.
 					</p>
 					<div className='flex gap-2'>
 						{links.map((link, idx) => {
