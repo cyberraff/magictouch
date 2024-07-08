@@ -106,7 +106,7 @@ export default async function page({params}:Props) {
 							<PortableText value={blog.author.about} />
 						</div>
 						<div>
-							<ul className='flex w-fit mx-auto'>
+							<ul className='flex w-fit mx-auto mt-4'>
 								{blog.author.socialMedia.map(
 									(social, index) => (
 										<li key={index}>
