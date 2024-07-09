@@ -26,6 +26,6 @@ export default {
 			type: 'array',
 			of: [{ type: 'block' }],
 		},
-		// {name:"name",title:"Name",type:"string"}
+		{name:"excerpt",title:"Excerpt",type:"string"}
 	],
 };

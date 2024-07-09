@@ -1,35 +1,34 @@
-import React from 'react'
+import React from 'react';
 
 import { PortableText } from '@portabletext/react';
 import { client, urlFor } from '@/sanity/config/sanity.utils';
-import Image from "next/image";
-import FormattedDate from "../components/FormatedDate";
+import Image from 'next/image';
+import FormattedDate from '../components/FormatedDate';
 import { FaInstagram, FaXTwitter, FaFacebookF } from 'react-icons/fa6';
-import { PortableTextBlock } from "sanity";
-
+import { PortableTextBlock } from 'sanity';
 
 interface fullBlog {
-  _id: string;
-  title: string;
-  date: string;
-  slug: string;
-  coverImage: string;
-  coverImageAlt?: string;
-  content: PortableTextBlock[];
-  author: Author;
+	_id: string;
+	title: string;
+	date: string;
+	slug: string;
+	coverImage: string;
+	coverImageAlt?: string;
+	content: PortableTextBlock[];
+	author: Author;
 }
 interface Author {
-  name: string;
-  picture: string;
-  about: PortableTextBlock[];
-  socialMedia: SocialMediaLink[];
+	name: string;
+	picture: string;
+	about: PortableTextBlock[];
+	socialMedia: SocialMediaLink[];
 }
 
 interface SocialMediaLink {
-  platform: string;
-  url: string;
+	platform: string;
+	url: string;
 }
-async function getData(slug:string){
+async function getData(slug: string) {
 	const query = `*[_type=="blogPost"  && slug.current == "${slug}"][0]{
   _id,
 title,
@@ -45,18 +44,17 @@ date,
     about,
     socialMedia
   }}`;
-  const data = await client.fetch(query);
-  return data;
+	const data = await client.fetch(query);
+	return data;
 }
-
 
 type Props = {
 	params: { slug: string };
 };
 
-export default async function page({params}:Props) {
-      const blog:fullBlog = await getData(params.slug);
-	  
+export default async function page({ params }: Props) {
+	const blog: fullBlog = await getData(params.slug);
+
 	return (
 		<>
 			<section id='Services' className='bg-background py-16 lg:py-28 '>

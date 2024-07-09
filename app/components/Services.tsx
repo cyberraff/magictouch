@@ -1,70 +1,44 @@
 // 'use client';
 import { Button } from '@/components/ui/button';
+import { client } from '@/sanity/config/sanity.utils';
+import { PortableTextBlock } from "sanity";
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-export const services = [
-	{
-		name: 'Swedish Massage',
-		image: '/header-1.jpg',
-		slug: 'slug',
-		description:
-			'A classic massage technique that uses long, flowing strokes to promote relaxation and improve circulation.',
-	},
-	// {
-	// 	name: 'DeepTissue Massage',
-	// 	image: '/header-1.jpg',
-	// 	slug: 'slug',
+import { PortableText } from "next-sanity";
 
-	// 	description:
-	// 		'A targeted massage that focuses on the deeper layers of muscle tissue to relieve chronic tension and pain.',
-	// },
-	{
-		name: 'Hot Stone Massage',
-		image: '/header-1.jpg',
-		slug: 'slug',
 
-		description:
-			'A soothing and therapeutic massage that uses heated stones to melt away muscle tension and promote deep relaxation.',
-	},
-	// {
-	// 	name: 'Prenatal Massage',
-	// 	image: '/header-1.jpg',
-	// 	slug: 'slug',
-	// 	description:
-	// 		'A specialized massage designed to provide relief for expectant mothers, addressing the unique physical and emotional needs of pregnancy.',
-	// },
-	{
-		name: 'Sports Massage',
-		image: '/header-1.jpg',
-		slug: 'slug',
-		description:
-			'A specialized massage that focuses on the specific needs of athletes, helping to prevent injuries, improve performance, and aid in recovery.',
-	},
-	// {
-	// 	name: 'Aromatherapy Massage',
-	// 	image: '/header-1.jpg',
-	// 	slug: 'slug',
-	// 	description:
-	// 		'A relaxing and therapeutic massage that incorporates the use of essential oils to enhance the benefits of the massage and promote overall well-being.',
-	// },
-	{
-		name: 'Couples Massage',
-		image: '/header-1.jpg',
-		slug: 'slug',
-		description:
-			'A shared experience where two people receive massages simultaneously, allowing them to connect and unwind together.',
-	},
-	// {
-	// 	name: 'Corporate Massage',
-	// 	image: '/header-1.jpg',
-	// 	slug: 'slug',
-	// 	description:
-	// 		'On-site massage services tailored to the needs of businesses, helping to reduce stress, improve productivity, and promote employee well-being.',
-	// },
-];
+interface Service {
+	// slice ( arg0: number ): unknown;
+	_id: string;
+	name: string;
+	image: string;
+	excerpt:string;
+	content: PortableTextBlock[];
+}
 
-export default function Services() {
+async function getData() {
+	const query = `*[_type=="service"]{
+  	_id,
+    name,
+    "image":image.asset->url,
+    content,excerpt,
+    }`;
+	const data:Service[] = await client.fetch(query);
+	return data;
+}
+export default async function Services() {
+	const services= await getData()
+	// const limitedService= services.slice(0, 3)
+	 const filteredServices = services.filter((service) => {
+			// Replace 'Swedish Massage', 'Hot Stone Massage', and 'Couples Massage' with the names of your desired services
+			return [
+				'Swedish Massage',
+			
+				'Couples Massage',
+				'Deep Tissue Massage',
+			].includes(service.name);
+		});
 	return (
 		<section id='Services' className='bg-background py-16 lg:py-28 '>
 			<div className=' px-4 sm:px-6 max-w-5xl py-2 bg-background lg:max-w-7xl  mx-auto '>
@@ -72,7 +46,8 @@ export default function Services() {
 					Our Services
 				</h2>
 				<div className='md:flex gap-12 md:w-full'>
-					{services.map((service, idx) => {
+					{filteredServices.map((service, idx) => {
+						const halfContent = service.content.slice(0, 50);
 						return (
 							<div key={idx} className='py-4 flex-1'>
 								<div>
@@ -87,7 +62,12 @@ export default function Services() {
 										className=' w-80 h-48'
 									/>
 									<p className=' text-base pt-4'>
-										{service.description}
+										{service.excerpt.slice(0, 150)}...{' '}
+										<Link
+											href='/Services'
+											className=' text-primary hover:text-[#2d2d2d]'>
+											Read More
+										</Link>
 									</p>
 								</div>
 							</div>
@@ -96,7 +76,7 @@ export default function Services() {
 				</div>
 				<div className=' w-full flex justify-center'>
 					<Button className='mt-4 mx-auto  hover:bg-primary rounded-full py-5 px-8 lg:py-6 lg:px-10'>
-						<Link href='/Services'>Read More</Link>
+						<Link href='/Services'>See More</Link>
 					</Button>
 				</div>
 			</div>

@@ -15,25 +15,25 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 
-type ServiceType = {
+type TestimonyType = {
 	name: string;
 	about: string;
 	image: string;
-	slug: string;
-	description: string;
+	
+	testimony: string;
 };
 
 type PropType = {
 	slides: number[];
 	options?: EmblaOptionsType;
 	plugins?: EmblaPluginType[];
-	services: ServiceType[];
+	testimonial: TestimonyType[];
 };
 
 useEmblaCarousel.globalOptions = { loop: true };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-	const { slides, options, services } = props;
+	const { slides, options, testimonial } = props;
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
 	const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
@@ -64,28 +64,28 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 		<section className='embla'>
 			<div className='embla__viewport' ref={emblaRef}>
 				<div className='embla__container'>
-					{services.map((service, idx) => (
+					{testimonial.map((testimony, idx) => (
 						<div className='embla__slide' key={idx}>
 							<div className=' md:flex justify-center w-full'>
 								<div className='text-center md:w-[35%]'>
 									<Image
 										width={500}
 										height={500}
-										alt={service.name}
-										src={service.image}
+										alt={testimony.name}
+										src={testimony.image}
 										className='rounded-full w-40 h-40 border mx-auto'
 									/>
 									<p className=' text-2xl font-bold'>
-										{service.name}
+										{testimony.name}
 									</p>{' '}
 									<p className=' text-base'>
-										{service.about}
+										{testimony.about}
 									</p>
 								</div>
 								<div className='md:w-[65%] md:mr-auto mt-12 md:mt-0'>
 									<Card className=' md:w-[80%] md:h-[13rem] p-4 text-lg  w-full h-full'>
 										<CardContent className=' align-middle '>
-											{service.description}
+											{testimony.testimony}
 										</CardContent>
 									</Card>
 								</div>
