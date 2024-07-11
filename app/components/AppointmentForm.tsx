@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, {useState} from 'react';
 
 import { any, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -79,6 +79,11 @@ const massages = [
 	{ name: 'Luxury Spa' },
 ];
 export default function AppointmentForm() {
+
+	const [responseMessage, setResponseMessage] = useState<string>('');
+	const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+	const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+
 	// 1. Define your form.
 	const form = useForm<AppointmentFormSchemaType>({
 		resolver: zodResolver(formSchema),
@@ -94,11 +99,40 @@ export default function AppointmentForm() {
 
 	const { toast } = useToast();
 	// 2. Define a submit handler.
-	function onSubmit(values: AppointmentFormSchemaType) {
+	async function onSubmit(values: AppointmentFormSchemaType) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
-		console.log(values);
+		 setIsSubmitting(true);
+			const response = await fetch('/api/send-appointment', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(values),
+			});
+			const result = await response.json();
+			 if (response.ok) {
+					setIsSuccess(true);
+					 setIsSubmitting(false);
+					setResponseMessage(
+						'Your appointment has been scheduled successfully.',
+					);
+				} else {
+					setIsSuccess(false);
+					 setIsSubmitting(false);
+					setResponseMessage(
+						'There was an error scheduling your appointment. Please try again.',
+					);
+				}
+							
+									toast({
+										title: `${responseMessage}`,
+									});
+							
+			// setResponseMessage(result.message);
+
+			// console.log(values);
+			// console.log(result);
 	}
+	
 	return (
 		<Form {...form}>
 			<form
@@ -255,9 +289,21 @@ export default function AppointmentForm() {
 							</FormItem>
 						)}
 					/>{' '}
-					<Button className='w-full' type='submit'>
-						Schedule Appointment
+					<Button
+						className='w-full'
+						type='submit'
+						disabled={isSubmitting}>
+						{isSubmitting
+							? 'Scheduling...'
+							: 'Schedule Appointment'}
+						
 					</Button>
+		{/* display email response under button */}
+					{/* {responseMessage && (
+						<p style={{ color: isSuccess ? 'green' : 'red' }} className=" text-xs">
+							{responseMessage}
+						</p>
+					)} */}
 				</div>
 			</form>
 		</Form>

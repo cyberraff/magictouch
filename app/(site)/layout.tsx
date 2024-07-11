@@ -4,6 +4,7 @@ import '../globals.css';
 import Navbar from '../components/Navbar';
 import { Poppins } from 'next/font/google';
 import Footer from '../components/Footer';
+import { Toaster } from '@/components/ui/toaster';
 
 // const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({
@@ -31,6 +32,7 @@ export default function RootLayout({
 				<div className='bg-primary text-base'>
 					<Navbar />
 					{children}
+<Toaster/>
 					<Footer />
 				</div>
 			</body>
