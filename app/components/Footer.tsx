@@ -20,8 +20,8 @@ const socials = [
 
 export default function Footer() {
 	const pathname = usePathname();
-	const phoneNumber = '+1234567890';
-	const emailAddress = 'example@example.com';
+	const phoneNumber = '+(234) 916 704 8334';
+	const emailAddress = 'magictouchintspa@gmail.com';
 
 	return (
 		<footer className=''>
