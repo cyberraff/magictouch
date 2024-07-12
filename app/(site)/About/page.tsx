@@ -1,9 +1,29 @@
+import { client, urlFor } from '@/sanity/config/sanity.utils';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-export default function About() {
+async function getAboutImage() {
+	const query = `*[_type=="images" && name =="About us"][0]{
+    name,
+    "image":image.asset->url,
+    }`;
+	const data = await client.fetch(query);
+	return data;
+}
+async function getStoryImage(){
+	const query =`*[_type=="images" && name =="Our story"][0]{
+    name,
+    "image":image.asset->url,
+    }`
+	const data = await client.fetch(query);
+	return data;
+}
+export default async function About() {
+	const about = await getAboutImage();
+	const story = await getStoryImage();
+
 	return (
 		<>
 			{' '}
@@ -17,7 +37,7 @@ export default function About() {
 						<div className='md:w-1/2 w-full'>
 							<div className=' bg-[#2d2d2d] p-8 rounded-sm'>
 								<Image
-									src='/header-1.jpg'
+									src={about.image}
 									alt='about image'
 									width={400}
 									height={400}
@@ -56,7 +76,7 @@ export default function About() {
 						<div className='md:w-1/2 w-full'>
 							<div className=' bg-[#2d2d2d] p-8 rounded-sm'>
 								<Image
-									src='/header-1.jpg'
+									src={story.image}
 									alt='about image'
 									width={400}
 									height={400}

@@ -8,7 +8,7 @@ import About from '../components/About';
 import Testimonial from '../components/Testimonial';
 import Footer from '../components/Footer';
 
-// export const fetchCache = 'force-no-store';
+export const fetchCache = 'force-no-store';
 
 export default function Home() {
 	return (

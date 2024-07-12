@@ -77,18 +77,20 @@ export default function Contact() {
 					setResponseMessage(
 						'Your message has been sent successfully.',
 					);
+						toast({
+							title: 'Your message has been sent successfully.',
+						});
 				} else {
 					setIsSuccess(false);
 					setIsSubmitting(false);
 					setResponseMessage(
 						'There was an error sending your message. Please try again.',
 					);
-				}
-
-				toast({
-					title: `${responseMessage}`,
-				});
-							
+					toast({
+						title: 'There was an error sending your message. Please try again.',
+						variant: 'destructive',
+					});
+				}		
 	}
 	return (
 		<section className='bg-background  pt-16 lg:pt-28 pb-8 lg:pb-14'>

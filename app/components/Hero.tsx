@@ -16,7 +16,7 @@ async function getData() {
 	return data;
 }
 export default async function Hero() {
-	// const data = await getData();
+	const data = await getData();
 
 	return (
 		<section className='bg-background py-16 lg:py-28 '>
@@ -50,8 +50,7 @@ export default async function Hero() {
 				</div>
 				<div className=' md:w-[65%] gap-6 md:flex pt-10'>
 					<Image
-						// src={urlFor(data.image1).url()}
-						src='/header-1.jpg'
+						src={urlFor(data.image1).url()}
 						alt='Great Image'
 						width={450}
 						height={450}
@@ -60,8 +59,7 @@ export default async function Hero() {
 					/>
 
 					<Image
-						// src={urlFor(data.image2).url()}
-						src='/header-1.jpg'
+						src={urlFor(data.image2).url()}
 						alt='Great Image'
 						width={450}
 						height={450}

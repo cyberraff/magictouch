@@ -115,17 +115,20 @@ export default function AppointmentForm() {
 					setResponseMessage(
 						'Your appointment has been scheduled successfully.',
 					);
+					 toast({
+							title: 'Your appointment has been scheduled successfully.',
+						});
 				} else {
 					setIsSuccess(false);
 					 setIsSubmitting(false);
 					setResponseMessage(
 						'There was an error scheduling your appointment. Please try again.',
 					);
+					toast({
+						title: 'There was an error scheduling your appointment. Please try again.',
+						variant: 'destructive',
+					});
 				}
-							
-									toast({
-										title: `${responseMessage}`,
-									});
 							
 			// setResponseMessage(result.message);
 
